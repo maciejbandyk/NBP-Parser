@@ -22,6 +22,6 @@ namespace KursyWalut
             {
                 Console.WriteLine("Sellnig rate list. Min value: {0}, Max value: {1}, Average: {2}, Standard deviation: {3}", min, max, average, deviation);
             }
-        }
+        } 
     }
 }

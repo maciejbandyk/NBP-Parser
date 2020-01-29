@@ -24,8 +24,6 @@ namespace KursyWalutWPF
         public MainWindow()
         {
             InitializeComponent();
-            //listOfElements.Items.Add(new Item { Type = "Selling", Currency = "USD", Max = 2.542, Min = 2.551, StandardDeviation = 0.00042 });
-            var list = new ListView();
 
             buttonStart.Click += (o, e) => ButtonClick(currency.Text, dateFrom.SelectedDate, dateTo.SelectedDate);
         }
@@ -45,27 +43,9 @@ namespace KursyWalutWPF
                 controller.RunWPF();
                 Values buyingValues = controller.buyingValues;
                 Values sellingValues = controller.sellingValues;
-
-                //string b = controller.buyingList;
-
-
                 this.listOfElements.Items.Add(buyingValues);
                 this.listOfElements.Items.Add(sellingValues);
-
-                //listOfElements.Items.Add(a);
-                //listOfElements.Items.Add(b);
             }
-
         }
     }
-
-    public class Item 
-    {
-        public string Type { get; set; }
-        public string Currency { get; set; }
-        public double Min { get; set; }
-        public double Max { get; set; }
-        public double StandardDeviation { get; set; }
-    }
-
 }
