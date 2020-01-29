@@ -11,10 +11,11 @@ namespace KursyWalut
         private DataFetcher datafetcher;
         private AppView view;
         private XMLreader xmlreader;
+        public Values sellingValues { get; private set; }
+        public Values buyingValues { get; private set; }
         List<double> listOfSellingRates;
         List<double> listOfBuyingRates;
-        public string g { get; set; }
-        public string f { get; set; }
+        
         public enum ListType
         {
             BuyingRates = 0,
@@ -58,8 +59,8 @@ namespace KursyWalut
                 }
                 else
                 {
-                    g = ReturnBuyingListForWpf();
-                    f = ReturnSellingListForWpf();
+                    buyingValues = new Values("Buying List", validator.GetCurrency(), Statistics.GetMin(listOfBuyingRates), Statistics.GetMax(listOfBuyingRates), Statistics.GetAverage(listOfBuyingRates), Statistics.GetDeviation(listOfBuyingRates));
+                    sellingValues = new Values("Selling List", validator.GetCurrency(), Statistics.GetMin(listOfSellingRates), Statistics.GetMax(listOfSellingRates), Statistics.GetAverage(listOfSellingRates), Statistics.GetDeviation(listOfSellingRates));
                 }
             }
             else
@@ -73,15 +74,5 @@ namespace KursyWalut
         {
             Run(true);
         }
-        private string ReturnBuyingListForWpf()
-        {
-            return view.PrintValuesForWpf(ListType.BuyingRates, Statistics.GetMin(listOfBuyingRates), Statistics.GetMax(listOfBuyingRates), Statistics.GetAverage(listOfBuyingRates), Statistics.GetDeviation(listOfBuyingRates));
-        }
-
-        private string ReturnSellingListForWpf()
-        {
-            return view.PrintValuesForWpf(ListType.SellingRates, Statistics.GetMin(listOfSellingRates), Statistics.GetMax(listOfSellingRates), Statistics.GetAverage(listOfSellingRates), Statistics.GetDeviation(listOfSellingRates));
-        }
-
     }
 }
