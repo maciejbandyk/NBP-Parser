@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KursyWalutWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="410">
+        Title="NBP Parser" Height="450" Width="524">
     <Grid>
         <Grid.ColumnDefinitions>
             
@@ -32,9 +32,18 @@
         <DatePicker x:Name="dateFrom" Width="100" Height="25" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
         <DatePicker x:Name="dateTo" Width="100" Height="25" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom"/>
         <Button x:Name="buttonStart" Content="Start"  Width="100" Height="50" Grid.Column="2" Grid.Row="1"/>
-        
+
         <ListView x:Name="listOfElements" Height="100" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
-            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="80" Header="List Type" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Width="70" Header="Currency" DisplayMemberBinding="{Binding Currency}"/>
+                    <GridViewColumn Width="90" Header="Minimum" DisplayMemberBinding="{Binding Min}"/>
+                    <GridViewColumn Width="90" Header="Maximum" DisplayMemberBinding="{Binding Max}"/>
+                    <GridViewColumn Width="90" Header="Average" DisplayMemberBinding="{Binding Average}"/>
+                    <GridViewColumn Width="118" Header="Standard Deviation" DisplayMemberBinding="{Binding StandardDeviation}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
 
